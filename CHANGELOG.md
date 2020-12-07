@@ -647,3 +647,16 @@
 ### Fix
 
 - CalendarHeader - Fix alignment for 'showWeekNumbers'.
+
+## [1.501.0] - 2020-12-03
+
+### Added
+
+- 'react-component-driver' setup.
+- Calendar - adding component tests.
+
+## [1.502.0] - 2020-12-7
+
+### Fix
+
+- Agenda, ReservationList, CalendarList - removed UNSAFE methods (PR #1356).
