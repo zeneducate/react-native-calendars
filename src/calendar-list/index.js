@@ -14,6 +14,14 @@ import CalendarHeader from '../calendar/header/index';
 
 const {width} = Dimensions.get('window');
 
+const weekCount = (year, month) => {
+  // Sun=0, Mon=1, Tue=2, Wed=3, Thu=4, Fri=5, Sat=6
+  const wday = new Date(year, month, 1).getDay();
+  const used = XDate.getDaysInMonth(year, month) + (wday === 0 ? 6 : wday - 1);
+
+  return Math.ceil(used / 7);
+};
+
 /**
  * @description: Calendar List component for both vertical and horizontal calendars
  * @extends: Calendar
@@ -34,6 +42,12 @@ class CalendarList extends Component {
     calendarWidth: PropTypes.number,
     /** Dynamic calendar height */
     calendarHeight: PropTypes.number,
+    /** Height of a day */
+    dayHeight: PropTypes.number,
+    /** Height of the month header */
+    monthHeaderHeight: PropTypes.number,
+    /** Bottom margin on months */
+    monthBottomMargin: PropTypes.number,
     /** Style for the List item (the calendar) */
     calendarStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     /** Whether to use static header that will not scroll with the list (horizontal only) */
@@ -62,6 +76,9 @@ class CalendarList extends Component {
   static defaultProps = {
     calendarWidth: width,
     calendarHeight: 360,
+    dayHeight: 58,
+    monthBottomMargin: 28,
+    monthHeaderHeight: 64.7,
     pastScrollRange: 50,
     futureScrollRange: 50,
     showScrollIndicator: false,
@@ -167,8 +184,15 @@ class CalendarList extends Component {
     this.listView.scrollToOffset({offset: scrollAmount, animated: false});
   };
 
+  getCalendarHeightForMonthAtIndex = index => {
+    return (
+      this.monthBottomMargin + this.monthHeaderHeight + (this.state.rowsMeta[index]?.weekCount || 0) * this.dayHeight
+    );
+  };
+
   getItemLayout = (data, index) => {
-    const {horizontal, calendarHeight, calendarWidth} = this.props;
+    const {horizontal, calendarWidth} = this.props;
+    const calendarHeight = this.getCalendarHeightForMonthAtIndex(index);
 
     return {
       length: horizontal ? calendarWidth : calendarHeight,
@@ -247,6 +271,7 @@ class CalendarList extends Component {
 
   renderItem = ({item}) => {
     const {calendarStyle, horizontal, calendarWidth, testID, ...others} = this.props;
+    const calendarHeight = this.getCalendarHeightForMonthAtIndex(index);
 
     return (
       <CalendarListItem
@@ -254,6 +279,7 @@ class CalendarList extends Component {
         item={item}
         testID={`${testID}_${item}`}
         style={calendarStyle}
+        calendarHeight={calendarHeight}
         calendarWidth={horizontal ? calendarWidth : undefined}
         scrollToMonth={this.scrollToMonth}
       />
