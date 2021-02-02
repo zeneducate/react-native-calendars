@@ -16,6 +16,8 @@ const {width} = Dimensions.get('window');
 
 const weekCount = date => {
   // Sun=0, Mon=1, Tue=2, Wed=3, Thu=4, Fri=5, Sat=6
+  const year = date.getYear();
+  const month = date.getMonth();
   const wday = date.setDate(1).getDay();
   const used = XDate.getDaysInMonth(year, month) + (wday === 0 ? 6 : wday - 1);
 
