@@ -120,7 +120,7 @@ class CalendarList extends Component {
         rows.push(rangeDateStr);
       }
 
-      rowsMeta.push(weekCount(rangeDate));
+      rowsMeta.push({weekCount: weekCount(rangeDate)});
     }
 
     this.state = {
@@ -262,7 +262,7 @@ class CalendarList extends Component {
         val = this.state.texts[i];
       }
       newrows.push(val);
-      newRowsMeta.push(weekCount(date));
+      newRowsMeta.push({weekCount: weekCount(date)});
       if (rowIsCloseToViewable(i, 0)) {
         visibleMonths.push(xdateToData(val));
       }
