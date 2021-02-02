@@ -73,6 +73,12 @@ class CalendarList extends Component {
     onEndReachedThreshold: PropTypes.number,
     /** Called once when the scroll position gets within onEndReachedThreshold */
     onEndReached: PropTypes.func
+    /** A RefreshControl component, used to provide pull-to-refresh functionality for the ScrollView */
+    refreshControl: PropTypes.element,
+    /** Set this true while waiting for new data from a refresh */
+    refreshing: PropTypes.bool,
+    /** If provided, a standard RefreshControl will be added for "Pull to Refresh" functionality. Make sure to also set the refreshing prop correctly */
+    onRefresh: PropTypes.func,
   };
 
   static defaultProps = {
@@ -347,6 +353,9 @@ class CalendarList extends Component {
           keyExtractor={this.props.keyExtractor}
           onEndReachedThreshold={this.props.onEndReachedThreshold}
           onEndReached={this.props.onEndReached}
+          refreshControl={this.props.refreshControl}
+          refreshing={this.props.refreshing}
+          onRefresh={this.props.onRefresh}
         />
         {this.renderStaticHeader()}
       </View>
