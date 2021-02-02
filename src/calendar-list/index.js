@@ -14,9 +14,9 @@ import CalendarHeader from '../calendar/header/index';
 
 const {width} = Dimensions.get('window');
 
-const weekCount = (year, month) => {
+const weekCount = date => {
   // Sun=0, Mon=1, Tue=2, Wed=3, Thu=4, Fri=5, Sat=6
-  const wday = new Date(year, month, 1).getDay();
+  const wday = date.setDate(1).getDay();
   const used = XDate.getDaysInMonth(year, month) + (wday === 0 ? 6 : wday - 1);
 
   return Math.ceil(used / 7);
@@ -93,6 +93,9 @@ class CalendarList extends Component {
     super(props);
 
     this.style = styleConstructor(props.theme);
+    this.dayHeight = props.dayHeight;
+    this.monthBottomMargin = props.monthBottomMargin;
+    this.monthHeaderHeight = props.monthHeaderHeight;
 
     this.viewabilityConfig = {
       itemVisiblePercentThreshold: 20
