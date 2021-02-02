@@ -277,7 +277,7 @@ class CalendarList extends Component {
     });
   };
 
-  renderItem = ({item}) => {
+  renderItem = ({item, index}) => {
     const {calendarStyle, horizontal, calendarWidth, testID, ...others} = this.props;
     const calendarHeight = this.getCalendarHeightForMonthAtIndex(index);
 
