@@ -96,7 +96,7 @@ class CalendarListItem extends Component {
       const text = item.toString();
 
       return (
-        <View style={[{width: calendarWidth}, this.style.placeholder]}>
+        <View style={[{height: calendarHeight, width: calendarWidth}, this.style.placeholder]}>
           <Text allowFontScaling={false} style={this.style.placeholderText}>
             {text}
           </Text>
