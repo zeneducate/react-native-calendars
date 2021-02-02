@@ -99,6 +99,7 @@ class CalendarList extends Component {
     };
 
     const rows = [];
+    const rowsMeta = [];
     const texts = [];
     const date = parseDate(props.current) || XDate();
 
@@ -118,10 +119,13 @@ class CalendarList extends Component {
       } else {
         rows.push(rangeDateStr);
       }
+
+      rowsMeta.push(weekCount(rangeDate));
     }
 
     this.state = {
       rows,
+      rowsMeta,
       texts,
       openDate: date,
       currentMonth: parseDate(props.current)
@@ -244,18 +248,21 @@ class CalendarList extends Component {
 
     const rowclone = this.state.rows;
     const newrows = [];
+    const newRowsMeta = [];
     const visibleMonths = [];
 
     for (let i = 0; i < rowclone.length; i++) {
       let val = rowclone[i];
       const rowShouldBeRendered = rowIsCloseToViewable(i, 1);
+      const date = this.state.openDate.clone().addMonths(i - this.props.pastScrollRange, true);
 
       if (rowShouldBeRendered && !rowclone[i].getTime) {
-        val = this.state.openDate.clone().addMonths(i - this.props.pastScrollRange, true);
+        val = date;
       } else if (!rowShouldBeRendered) {
         val = this.state.texts[i];
       }
       newrows.push(val);
+      newRowsMeta.push(weekCount(date));
       if (rowIsCloseToViewable(i, 0)) {
         visibleMonths.push(xdateToData(val));
       }
@@ -265,6 +272,7 @@ class CalendarList extends Component {
 
     this.setState({
       rows: newrows,
+      rowsMeta: newRowsMeta,
       currentMonth: parseDate(visibleMonths[0])
     });
   };
