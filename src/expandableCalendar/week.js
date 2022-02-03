@@ -119,7 +119,7 @@ class Week extends Component {
   }
 
   render() {
-    const {current, showMonth} = this.props;
+    const {current}= this.props;
     const dates = this.getWeek(current);
     const month = dates[0].getMonth()
     const week = [];
@@ -135,12 +135,9 @@ class Week extends Component {
     // }
 
     return (
-      <>
-        {showMonth && <Text>{month}</Text>}
         <View style={this.style.container}>
           <View style={[this.style.week, this.props.style]}>{week}</View>
         </View>
-      </>
     );
   }
 }
