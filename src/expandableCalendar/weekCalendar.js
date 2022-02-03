@@ -4,6 +4,7 @@ import {FlatList, View, Text} from 'react-native';
 import {Map} from 'immutable';
 import PropTypes from 'prop-types';
 import XDate from 'xdate';
+import { parseDate } from "react-native-calendars/src/interface";
 
 import styleConstructor from './style';
 import CalendarList from '../calendar-list';
@@ -14,7 +15,7 @@ import {weekDayNames} from '../dateutils';
 
 const commons = require('./commons');
 const UPDATE_SOURCES = commons.UPDATE_SOURCES;
-const NUMBER_OF_PAGES = 2; // must be a positive number
+const NUMBER_OF_PAGES = 20; // must be a positive number
 
 /**
  * @description: Week calendar component
@@ -184,7 +185,7 @@ class WeekCalendar extends Component {
   keyExtractor = (item, index) => index.toString();
 
   render() {
-    const {allowShadow, firstDay, hideDayNames, current, context} = this.props;
+    const {allowShadow, firstDay, hideDayNames, current, context, showMonth} = this.props;
     const {items} = this.state;
     let weekDaysNames = weekDayNames(firstDay);
     const extraData = Map({
@@ -192,8 +193,16 @@ class WeekCalendar extends Component {
       date: context.date,
       firstDay
     });
+
+    const month = parseDate(context.date).toString('MMMM yyyy')
+
     return (
       <View testID={this.props.testID} style={[allowShadow && this.style.containerShadow, !hideDayNames && {paddingBottom: 6}]}>
+        {showMonth && <Text
+          allowFontScaling={false}
+          style={this.style.headerTitle}
+        >{month}
+        </Text>}
         {!hideDayNames &&
           <View style={[this.style.week, {marginTop: 12, marginBottom: -2}]}>
             {/* {this.props.weekNumbers && <Text allowFontScaling={false} style={this.style.dayHeader}></Text>} */}

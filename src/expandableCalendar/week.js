@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import XDate from 'xdate';
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import dateutils from '../dateutils';
 import {parseDate} from '../interface';
 import {extractComponentProps} from '../component-updater';
@@ -92,7 +92,7 @@ class Week extends Component {
   // renderWeekNumber (weekNumber) {
   //   return <BasicDay key={`week-${weekNumber}`} theme={this.props.theme} marking={{disableTouchEvent: true}} state='disabled'>{weekNumber}</Day>;
   // }
-  
+
   renderDay(day, id) {
     const {current, hideExtraDays} = this.props;
     const dayProps = extractComponentProps(Day, this.props);
@@ -119,8 +119,9 @@ class Week extends Component {
   }
 
   render() {
-    const {current} = this.props;
+    const {current, showMonth} = this.props;
     const dates = this.getWeek(current);
+    const month = dates[0].getMonth()
     const week = [];
 
     if (dates) {
@@ -134,9 +135,12 @@ class Week extends Component {
     // }
 
     return (
-      <View style={this.style.container}>
-        <View style={[this.style.week, this.props.style]}>{week}</View>
-      </View>
+      <>
+        {showMonth && <Text>{month}</Text>}
+        <View style={this.style.container}>
+          <View style={[this.style.week, this.props.style]}>{week}</View>
+        </View>
+      </>
     );
   }
 }
