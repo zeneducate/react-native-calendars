@@ -12,7 +12,7 @@
 
 ## [1.189.0] - 2019-6-24
 
-### Bug Fix
+### Fix
 
 - CalendarProvider - fix for 'date' prop update.
 
@@ -23,13 +23,13 @@
 - CalendarContext - 'disabledOpacity' prop to control the opacity of the today button when it is disabled (default is now undefined, meaning no opacity).
 - src/style.js - adding support for today button's font size, weight, family.
 
-### Bug Fix
+### Fix
 
 - CalendarContext - fix for today button's width to allow button to take content's width.
 
 ## [1.191.0] - 2019-6-24
 
-### Bug Fix
+### Fix
 
 - ExpandableCalendar - limit calendar min height to closed height.
 
@@ -42,7 +42,7 @@
 
 ## [1.193.0] - 2019-6-26
 
-### Bug Fix
+### Fix
 
 - ExpandableCalendar - fix for week paddings. Changing knob container height and weekDays style.
 - CalendarList/item - limit 'headerStyle' to horizontal only.
@@ -187,7 +187,7 @@
 
 ## [1.221.0] - 2020-1-16
 
-### Bug Fix
+### Fix
 
 - ExpandableCalendar - fix 'renderArrow' (PR #1037).
 
@@ -205,7 +205,7 @@
 
 ## [1.225.0] - 2020-1-19
 
-### Bug Fix
+### Fix
 
 - package.json - adding 'hoist-non-react-statics' dependency (fix issue #900).
 
@@ -223,7 +223,7 @@
 
 ## [1.228.0] - 2020-1-19
 
-### Bug Fix
+### Fix
 
 - Day custom - fix for 'selectedDayTextColor' not working (PR #995).
 
@@ -247,11 +247,11 @@
 
 ## [1.232.0] - 2020-1-19
 
-### Bug Fix
+### Fix
 
 - Day components - fix for 'disableTouchEvent' marking to disable interactions for all marking types.
 
-## [1.233.0] = 2020-1-19
+## [1.233.0] - 2020-1-19
 
 ### Added
 
@@ -365,7 +365,7 @@
 
 ## [1.251.0] - 2020-1-22
 
-### Bug Fix
+### Fix
 
 - CalendarList - 'keyboardShouldPersistTaps' PropTypes.
 
@@ -402,7 +402,7 @@
 
 ## [1.257.0] - 2020-1-23
 
-### Bug fix
+### Fix
 
 - Reservation - secure calls to prop functions to avoid crashes.
 
@@ -444,7 +444,7 @@
 
 ## [1.264.0] - 2020-3-3
 
-### Bug fix
+### Fix
 
 - CalendarListItem - fix previous months bug (PR #1069).
 
@@ -474,7 +474,7 @@
 
 ## [1.297.0] - 2020-6-17
 
-### Bug fix
+### Fix
 
 - Calendar isn't getting re-rendered if the first day prop is changed.
 
@@ -570,6 +570,8 @@
 
 ## [1.404.0] - 2020-11-24
 
+### Changed
+
 - Moving inline styles to StyleSheets.
 
 ## [1.406.0] - 2020-11-24
@@ -608,6 +610,8 @@
 
 ## [1.494.0] - 2020-11-29
 
+### Changed
+
 - Code cleanup.
 
 ## [1.494.0] - 2020-11-29
@@ -618,9 +622,13 @@
 
 ## [1.495.0] - 2020-12-01
 
+### Changed
+
 - Edit README.
 
 ## [1.496.0] - 2020-12-02
+
+### Added
 
 - AgendaList, ExpandableCalendar, WeekCalendar - adding a note to wrap with CalendarProvider.
 
@@ -677,9 +685,7 @@
 
 ### Added
 
-- AgendaList - adding 'dayFormatter' prop to custom format section header's title.
-             - adding 'markToday' prop to control the "TODAY, ..." string appearance.
-             - passing 'title' as a param for 'renderSectionHeader' callback.
+- AgendaList - adding 'dayFormatter' prop to custom format section header's title. - adding 'markToday' prop to control the "TODAY, ..." string display. - passing 'title' as a param for 'renderSectionHeader' callback.
 
 ## [1.506.0] - 2020-12-28
 
@@ -691,4 +697,247 @@
 
 ### Fix
 
-- AgendaList - fix 'markToday' check for today's date.
+- AgendaList - fix 'markToday' check for today's date (equivalence).
+
+## [1.1250.0] - 2021-2-22
+
+### Changed
+
+- react-native upgrade to version 63.4.0.
+
+## [1.1251.0] - 2021-2-22
+
+### Changed
+
+- eslint rule 'no-undef' to 'off'.
+
+## [1.1252.0] - 2021-2-22
+
+### Changed
+
+- installing @babel/eslint-parser@7.13.4.
+- eslint rule 'no-undef' remove disabling.
+
+## [1.1253.0] - 2021-2-24
+
+### Changed
+
+- detox upgrade to version 18.6.2.
+
+## [1.1255.0] - 2021-4-4
+
+### Added
+
+- AgendaList - 'avoidDateUpdates' prop to block the date updates to CalendarContextProvider when list scrolls.
+
+### Fix
+
+- ExpandableCalendar - Android RTL issues (PR #1449).
+
+## [1.1256.0] - 2021-4-20
+
+### Fix
+
+- ExpandableCalendar - static header month update.
+
+## [1.1257.0] - 2021-4-20
+
+### Fix
+
+- Calendar & Agenda - remove usage of ViewPropTypes (PR #1424).
+- CalendarList - fix FlatList not rendering on web (PR #1405).
+- CalendarList - fix undefined horizontal prop in CalendarListItem (PR #1451).
+- Agenda - update 'selectedDate' on state when prop changes (PR #1080).
+
+## [1.1258.0] - 2021-4-22
+
+### Fix
+
+- Reverting: ExpandableCalendar - static header month update (version 1.1256.0).
+
+## [1.1259.0] - 2021-4-27
+
+### Changed
+
+- moment js as an optional dependency (PR #1446).
+
+### Added
+
+- CalendarList - 'animateScroll' prop to allow animation on ato list scroll (i.e. on arrow press).
+
+## [1.1260.0] - 2021-5-5
+
+### Added
+
+- Export CalendarContext.
+
+## [1.1261.0] - 2021-5-20
+
+### Added
+
+- CalendarHeader - individual day header style overrides (PR #1465).
+- ExpandableCalendar - 'openThreshold' and 'closeThreshold' props (PR #1476).
+- 'eslint-plugin-react-native' to dev-dependencies.
+
+### Changed
+
+- Update gradle version to 6.3 (PR #1479).
+- CalendarList example screen - adding functionality.
+
+### Fix
+
+- WeekCalendar - avoid updating when staying on the same week (PR #1482).
+- ExpandableCalendar - fix the markedDates we pass to WeekCalendar (PR #1483).
+
+### Performance
+
+- Remove inline style.
+- Remove object creation on passed props.
+- Improve examples.
+- Memoize methods and styles.
+- Additional tools - 'toMarkingFormat', 'isToday'.
+- ExpandableCalendar - setting selected date using 'state' prop instead of 'markedDates'.
+
+## [1.1262.0] - 2021-5-23
+
+### Changed
+
+- AgendaList - Remove arrow function from 'onScrollToIndexFailed' and omit 'context' passed to SectionList.
+
+## [1.1263.0] - 2021-6-3
+
+## Changed
+
+- Files formatting (PR #1513).
+- ExpandableCalendar demo - improving 'renderItem' example.
+
+## Fixed
+
+- Day - passed props for custom 'dayComponent'.
+- WeekCalendar - update marking on disabled day press.
+
+## [1.1264.0] - 2021-6-27
+
+## Added
+
+- WeekCalendar - adding presenter and unit tests (PR #1499).
+- CalendarContextProvider - adding presenter and unit tests (PR #1503).
+- Release snapshot versions (PR #1536 and PR #1538).
+- Typescript setup and DayBasic migration to TS (PR #1539).
+- Agenda - 'showClosingKnob' prop to use knob for closing the calendar (PR #1430).
+
+## Changed
+
+- Updating Cocoapods version to 1.10.1.
+
+## Fixed
+
+- Timeline - fix event height and top calculations (PR #1498).
+- TS - Fix build process (PR #1545).
+- ExpandableCalendar - fix arrow press callbacks (PR #1489).
+- README & ISSUE_TEMPLATE - edit.
+
+## [1.1265.0] - 2021-8-23
+
+## Changed
+
+- Change import to require - solved "Cannot assign to read only property 'exports' of object '#<Object>'" (PR #1553).
+- TS migration for all Calendars components.
+- Upgrading to react-native 0.64.2.
+
+## Added
+
+- AgendaList - support offset scroll to section (PR #1526).
+- AgendaList - allow passing 'onScrollToIndexFailed' (PR #1594).
+- Day - support 'inactive' state and add 'disableAllTouchEventsForInactiveDays' prop (PR #1596).
+
+## Fixed
+
+- ExpandableCalendar - 'onDayPress' not called (PR #1584).
+- Fixed issue with 'dateutils' export (PR #1548).
+
+## [1.1266.0] - 2021-8-24
+
+## Changed
+
+- Disabling Detox e2e tests.
+
+## [1.1267.0] - 2021-10-5
+
+## Fixed
+
+- CalendarListItem - height issue (PR #1614).
+- README - links for typescript (PR #1611).
+- lodash - change imports to make it tree-shakeable (PR #1613).
+- ExpandableCalendar - 'today' button bug (PR #1627).
+- CalendarHeader - 'renderHeader' updates.
+- Calendar - 'customHeader' ref.
+- CalendarList - fix types.
+
+## Added
+
+- Calendar - 'allowSelectionOutOfRange' prop (PR #1618).
+- AgendaList - 'scrollToNextEvent' prop (PR #1636).
+- Number localization (PR #1369).
+- TS types release.
+
+## Changed
+
+- Use modern export keyword (PR #1615).
+- Remove global and move types to types.ts.
+
+## [1.1268.0] - 2021-10-11
+
+## Fixed
+
+- Demo app load.
+- ExpandableCalendar - add throttle to onVisibleMonthsChange callback.
+
+## [1.1269.0] - 2021-11-17
+
+## Fixed
+
+- Fix eslint config and fix lint errors.
+- CalendarConsumer - fix passed ref (PR #1674).
+- Agenda - fix style Typo (animatedContainer -> animatedContainer) (PR #1670).
+
+## Changed
+
+- Migrating internal tools to TS.
+- Migrating demo files to TS.
+
+## [1.1270.0] - 2021-11-29
+
+- testIDs - reverting to js file with module.exports.
+
+## [1.1271.0] - 2021-12-7
+
+## Fixed
+
+- ContextProvider - 'onDateChanged' return type (should be 'string' and not 'Date').
+
+## [1.1272.0] - 2021-12-13
+
+## Added
+
+- ExpandableCalendar - Add 'closeOnDayPress' prop (PR #1673).
+- new theme prop - 'weekVerticalMargin' to control week row margin (PR #1682).
+- Calendar - add 'initialDate' prop to allow reset the calendar with new date.
+
+## Fixed
+
+- README - 'try it out' section missing steps (PR #1624).
+- Day - fix accessibility label localization (PR #1694).
+- Agenda - renders only for the first item of the day (PR #1699).
+- ExpandableCalendar - Only hide extra days when vertical and open (PR #1705).
+- ts configuration.
+
+## Changed
+
+- Replacing lodash 'invoke' with optional chaining.
+- Removing JS 'Date' as a type.
+- Calendar and CalendarList - removing unused parameter 'doNotTriggerListeners' from updateMonth().
+- 'input.js' - renaming 'velocityTracker'.
+- 'test.js' - renaming 'testUtils' and removing from folder.
+
+**_ End of changelog - please see release tags for notes _**

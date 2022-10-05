@@ -252,7 +252,14 @@ test/
 ios/
 android/
 demo/
+docsRNC/
 .babelrc
 # eslint-rules/
 scripts/
 
+# Typescript
+# ignore the .ts files
+*.ts
+*.tsx
+# include the .d.ts files
+!*.d.ts 
