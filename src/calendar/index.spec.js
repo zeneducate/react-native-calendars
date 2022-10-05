@@ -2,7 +2,7 @@ import XDate from 'xdate';
 import React from 'react';
 import {getTextNodes} from 'react-component-driver';
 import {advanceTo, clear as clearDate} from 'jest-date-mock';
-import {getDaysArray, partial} from '../../test';
+import {getDaysArray, partial} from '../testUtils';
 import {CalendarDriver} from './driver';
 
 describe('Calendar', () => {
@@ -19,7 +19,7 @@ describe('Calendar', () => {
 
   describe('Month days', () => {
     it('should render current month days including extra days from other months by default', () => {
-      let expectedDays = [];
+      const expectedDays = [];
       expectedDays.push(...getDaysArray(29, 31)); // March
       expectedDays.push(...getDaysArray(1, 30)); // April
       expectedDays.push(...getDaysArray(1, 2)); // May
@@ -36,6 +36,13 @@ describe('Calendar', () => {
       const expectedDays = getDaysArray(1, 31);
       expectedDays.push(...getDaysArray(1, 4)); // April days
       const drv = new CalendarDriver().withDefaultProps({current: '2020-03-01'}).render();
+      expect(drv.getDays()).toEqual(expectedDays);
+    });
+
+    it('should render month from `initialDate` prop date', () => {
+      const expectedDays = getDaysArray(1, 31);
+      expectedDays.push(...getDaysArray(1, 4)); // April days
+      const drv = new CalendarDriver().withDefaultProps({initialDate: '2020-03-01'}).render();
       expect(drv.getDays()).toEqual(expectedDays);
     });
 
@@ -123,7 +130,10 @@ describe('Calendar', () => {
         const date = '2020-04-01';
         const todayTextColor = '#AAAAAA';
         const todayBackgroundColor = '#BBBBBB';
-        const drv = new CalendarDriver().withDefaultProps({theme: {todayTextColor, todayBackgroundColor}}).render();
+        const context = {date: '2020-04-02'};
+        const drv = new CalendarDriver()
+          .withDefaultProps({theme: {todayTextColor, todayBackgroundColor}, context})
+          .render();
         expect(drv.getDay(date).getStyle()).toEqual(partial({backgroundColor: todayBackgroundColor, borderRadius: 16}));
         expect(drv.getDay(date).getTextStyle()).toEqual(partial({color: todayTextColor}));
       });
@@ -131,7 +141,7 @@ describe('Calendar', () => {
 
     describe('Accessibility labels', () => {
       it('should have default accessibility label', () => {
-        const drv = new CalendarDriver().render();
+        const drv = new CalendarDriver().withDefaultProps().render();
         expect(drv.getDay('2020-04-10').getAccessibilityLabel()).toBe('Friday 10 April 2020');
       });
 
@@ -213,7 +223,7 @@ describe('Calendar', () => {
     });
 
     it('should not have loading indicator with `displayLoadingIndicator` prop when `markedDates` collection has a value for every day of the month', () => {
-      let date = currentDate;
+      const date = currentDate;
       const markedDates = {};
       for (let i = 0; i < 30; i++) {
         const string = date.toISOString().split('T')[0];
